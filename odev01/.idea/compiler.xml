@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TestProject" />
-        <module name="1030510398_BS435_WebProgramlama" />
       </profile>
     </annotationProcessing>
   </component>
