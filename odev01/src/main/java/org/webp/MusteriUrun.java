@@ -1,9 +1,13 @@
 package org.webp;
 
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -12,6 +16,9 @@ import java.util.List;
 public class MusteriUrun {
 
     @Column(name = "NO") @Id
+    @NotBlank
+    @NotNull
+    @Range(min = 0, max = 150)
     private Long No;
 
     @ManyToOne
@@ -26,8 +33,13 @@ public class MusteriUrun {
     @JoinColumn(name = "uno", referencedColumnName = "Urun")
     private Urun uno;
 
+    @NotBlank
+    @NotNull
     private String tarih;
 
+    @NotNull
+    @NotBlank
+    @Range(min = 0, max = 150)
     private String mmiktar;
 
 
