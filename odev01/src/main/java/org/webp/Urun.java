@@ -1,33 +1,54 @@
 package org.webp;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.Range;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 
 @Table(name = "Urun")
 @Entity
 public class Urun {
 
-    @Column(name = "urun") @Id
-    private Long urun;
-
+    @Column(name = "urun")
+    @Id
+    @NotBlank
+    @Range(min = 0, max = 150)
+    private Long Uno;
+    @Column(name = "urun")
     private String uadi;
 
     private String fiyat;
 
     private String miktar;
 
-    public Long getUrun() {
-        return urun;
+    @OneToMany(mappedBy = "urun")
+    private List<MusteriUrun> uno;
+
+    public void setUno(List<MusteriUrun> uno) {
+        this.uno = uno;
     }
 
-    public void setUrun(Long urun) {
-        this.urun = urun;
+    public List<MusteriUrun> getGet() {
+        return get;
     }
+
+    public void setGet(List<MusteriUrun> get) {
+        this.get = get;
+    }
+
+    public List<MusteriUrun> get;
+
+    {
+        this.Uno = Uno;
+    }
+
+    public Long getUno() {
+        return Uno;
+    }
+
 
     public String getUadi() {
         return uadi;
@@ -52,4 +73,5 @@ public class Urun {
     public void setMiktar(String miktar) {
         this.miktar = miktar;
     }
+
 }

@@ -1,10 +1,8 @@
 package org.webp;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Table(name = "Musteri")
@@ -12,7 +10,9 @@ import javax.persistence.Table;
 public class Musteri {
 
     @Column(name = "mno") @Id
-    private Long mno;
+
+    @OneToMany(mappedBy = "musteri")
+    private List<MusteriUrun> mno;
 
     private String ad;
 
@@ -22,11 +22,11 @@ public class Musteri {
 
     private String tel;
 
-    public Long getMno() {
+    public List<MusteriUrun> getMno() {
         return mno;
     }
 
-    public void setMno(Long mno) {
+    public void setMno(List<MusteriUrun> mno) {
         this.mno = mno;
     }
 

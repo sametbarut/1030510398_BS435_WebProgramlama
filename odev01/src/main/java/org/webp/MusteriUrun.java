@@ -1,10 +1,10 @@
 package org.webp;
 
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import java.util.List;
 
 
 @Table(name = "MusteriUrun")
@@ -14,13 +14,22 @@ public class MusteriUrun {
     @Column(name = "NO") @Id
     private Long No;
 
-    private String mno;
+    @ManyToOne
+    @JoinColumn(name = "mno", referencedColumnName = "Musteri")
+    private Urun mno;
 
-    private String uno;
+    public void setMno(Urun mno) {
+        this.mno = mno;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "uno", referencedColumnName = "Urun")
+    private Urun uno;
 
     private String tarih;
 
     private String mmiktar;
+
 
     public Long getNo() {
         return No;
@@ -30,19 +39,12 @@ public class MusteriUrun {
         No = no;
     }
 
-    public String getMno() {
-        return mno;
-    }
 
-    public void setMno(String mno) {
-        this.mno = mno;
-    }
-
-    public String getUno() {
+    public Urun getUno() {
         return uno;
     }
 
-    public void setUno(String uno) {
+    public void setUno(Urun uno) {
         this.uno = uno;
     }
 
