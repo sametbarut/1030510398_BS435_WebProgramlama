@@ -1,7 +1,10 @@
 package org.webp;
 
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
@@ -9,18 +12,33 @@ import java.util.List;
 @Entity
 public class Musteri {
 
-    @Column(name = "mno") @Id
 
-    @OneToMany(mappedBy = "musteri")
+    @Column(name = "mno") @Id
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Musteri")
     private List<MusteriUrun> mno;
 
+    @NotNull
+    @Pattern(regexp =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     private String ad;
 
+    @NotNull
+    @Pattern(regexp =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     private String soyad;
 
+    @NotNull
+    @Past
+    @Future
     private String dtarih;
 
+
+    @NotBlank
+    @Range(min = 0, max = 150)
     private String tel;
+
+    public Musteri() {
+    }
 
     public List<MusteriUrun> getMno() {
         return mno;

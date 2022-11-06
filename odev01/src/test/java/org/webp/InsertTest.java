@@ -19,14 +19,13 @@ public class InsertTest {
 
     @BeforeEach
     public void init() {
-        //her bir test calismadan once BeforeEach calistirilir
         factory = Persistence.createEntityManagerFactory("Hibernate");
         em = factory.createEntityManager();
     }
 
     @AfterEach
     public void tearDown() {
-        //her bir test calistiktan sonra BeforeEach calistirilir
+
 
         em.close();
         factory.close();
@@ -50,23 +49,33 @@ public class InsertTest {
 
 
     @Test
-    public void insertMovie() {
+    public void insertMusteriUrun() {
 
-        MovieDetails movie = new MovieDetails();
-        movie.setId(1L);
+        MusteriUrun musteriurun = new MusteriUrun();
+        musteriurun.setNo(1L);
 
-        boolean persisted = persistInATransaction(movie);
+        boolean persisted = persistInATransaction(musteriurun);
         assertTrue(persisted);
     }
 
     @Test
-    public void insertSong() {
+    public void insertMusteri() {
 
-        Song song = new Song();
-        song.setId(2L);
+        Musteri musteri = new Musteri();
+        musteri.setSoyad(String.valueOf(2L));
 
-        boolean persisted = persistInATransaction(song);
-        assertTrue(persisted); // "Song" adında bir tablo yok
+        boolean persisted = persistInATransaction(musteri);
+        assertTrue(persisted);
+    }
+
+    @Test
+    public void insertUrun() {
+
+        Urun urun = new Urun();
+        urun.setFiyat(String.valueOf(3L));
+
+        boolean persisted = persistInATransaction(urun);
+        assertTrue(persisted);
     }
 
 }

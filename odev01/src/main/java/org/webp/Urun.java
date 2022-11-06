@@ -1,10 +1,13 @@
 package org.webp;
 
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -14,18 +17,31 @@ public class Urun {
 
     @Column(name = "urun")
     @Id
+    @NotNull
     @NotBlank
-    @Range(min = 0, max = 150)
+    @Range(min = 1, max = 150)
     private Long Uno;
-    @Column(name = "urun")
+
+    @Length(min=2, max = 128)
+    @NotNull
     private String uadi;
 
+
+
+    @Range(min = 0, max = 150)
+    @NotBlank
+    @NotNull
     private String fiyat;
 
+    @Range(min = 1, max = 150)
+    @NotBlank
     private String miktar;
 
-    @OneToMany(mappedBy = "urun")
+    @OneToMany(mappedBy = "Urun")
     private List<MusteriUrun> uno;
+
+    public Urun() {
+    }
 
     public void setUno(List<MusteriUrun> uno) {
         this.uno = uno;
