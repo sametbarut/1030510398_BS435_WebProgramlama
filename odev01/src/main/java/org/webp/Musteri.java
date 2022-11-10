@@ -4,8 +4,14 @@ package org.webp;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 import javax.validation.constraints.*;
 import java.util.ArrayList;
+=======
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+>>>>>>> main
 import java.util.List;
 
 
@@ -13,6 +19,7 @@ import java.util.List;
 @Entity
 public class Musteri {
 
+<<<<<<< HEAD
     @GeneratedValue
     @Id
     private Long mno;
@@ -24,14 +31,35 @@ public class Musteri {
     private String ad;
 
     @NotNull
+=======
+    @Column(name = "mno") @Id
+    @OneToMany(mappedBy = "musteri")
+    private List<MusteriUrun> mno;
+
+    @NotNull
+    @Pattern(regexp =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+    private String ad;
+
+    @NotNull
+    @Pattern(regexp =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+>>>>>>> main
     private String soyad;
 
     @NotNull
     private String dtarih;
 
+<<<<<<< HEAD
     @NotBlank
     @Range(min = 0, max = 150)
     private Long tel;
+=======
+
+    @NotBlank
+    @Range(min = 0, max = 150)
+    private String tel;
+>>>>>>> main
 
     public Long getMno() {
         return mno;

@@ -8,14 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> main
 
 
 @Table(name = "MusteriUrun")
 @Entity
 public class MusteriUrun {
 
+<<<<<<< HEAD
     @Id
     @GeneratedValue
+=======
+    @Column(name = "NO") @Id
+    @NotBlank
+    @NotNull
+    @Range(min = 0, max = 150)
+>>>>>>> main
     private Long No;
 
     @ManyToOne
@@ -31,7 +42,11 @@ public class MusteriUrun {
     @NotNull
     @NotBlank
     @Range(min = 0, max = 150)
+<<<<<<< HEAD
     private Long miktar;
+=======
+    private String mmiktar;
+>>>>>>> main
 
     public MusteriUrun() {
     }
