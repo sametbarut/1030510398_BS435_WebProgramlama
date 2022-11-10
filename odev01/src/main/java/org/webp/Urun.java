@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,11 +16,7 @@ import java.util.List;
 @Entity
 public class Urun {
 
-    @Column(name = "urun")
     @Id
-    @NotNull
-    @NotBlank
-    @Range(min = 1, max = 150)
     private Long Uno;
 
     @Length(min=2, max = 128)
@@ -27,44 +24,26 @@ public class Urun {
     private String uadi;
 
 
-
-    @Range(min = 0, max = 150)
-    @NotBlank
     @NotNull
-    private String fiyat;
+    private Long fiyat;
 
     @Range(min = 1, max = 150)
     @NotBlank
-    private String miktar;
+    private Long miktar;
 
-    @OneToMany(mappedBy = "Urun")
-    private List<MusteriUrun> uno;
+    @OneToMany(mappedBy = "y")
+    public List<MusteriUrun>  ym= new ArrayList<>();
 
     public Urun() {
-    }
-
-    public void setUno(List<MusteriUrun> uno) {
-        this.uno = uno;
-    }
-
-    public List<MusteriUrun> getGet() {
-        return get;
-    }
-
-    public void setGet(List<MusteriUrun> get) {
-        this.get = get;
-    }
-
-    public List<MusteriUrun> get;
-
-    {
-        this.Uno = Uno;
     }
 
     public Long getUno() {
         return Uno;
     }
 
+    public void setUno(Long uno) {
+        Uno = uno;
+    }
 
     public String getUadi() {
         return uadi;
@@ -74,20 +53,27 @@ public class Urun {
         this.uadi = uadi;
     }
 
-    public String getFiyat() {
+    public Long getFiyat() {
         return fiyat;
     }
 
-    public void setFiyat(String fiyat) {
+    public void setFiyat(Long fiyat) {
         this.fiyat = fiyat;
     }
 
-    public String getMiktar() {
+    public Long getMiktar() {
         return miktar;
     }
 
-    public void setMiktar(String miktar) {
+    public void setMiktar(Long miktar) {
         this.miktar = miktar;
     }
 
+    public List<MusteriUrun> getYm() {
+        return ym;
+    }
+
+    public void setYm(List<MusteriUrun> ym) {
+        this.ym = ym;
+    }
 }

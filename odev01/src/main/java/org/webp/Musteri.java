@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,40 +13,40 @@ import java.util.List;
 @Entity
 public class Musteri {
 
+    @GeneratedValue
+    @Id
+    private Long mno;
 
-    @Column(name = "mno") @Id
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Musteri")
-    private List<MusteriUrun> mno;
+    @OneToMany(mappedBy = "x")
+    private List<MusteriUrun> ys = new ArrayList<>();
 
     @NotNull
-    @Pattern(regexp =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     private String ad;
 
     @NotNull
-    @Pattern(regexp =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     private String soyad;
 
     @NotNull
-    @Past
-    @Future
     private String dtarih;
-
 
     @NotBlank
     @Range(min = 0, max = 150)
-    private String tel;
+    private Long tel;
 
-    public Musteri() {
-    }
-
-    public List<MusteriUrun> getMno() {
+    public Long getMno() {
         return mno;
     }
 
-    public void setMno(List<MusteriUrun> mno) {
+    public void setMno(Long mno) {
         this.mno = mno;
+    }
+
+    public List<MusteriUrun> getYs() {
+        return ys;
+    }
+
+    public void setYs(List<MusteriUrun> ys) {
+        this.ys = ys;
     }
 
     public String getAd() {
@@ -72,11 +73,14 @@ public class Musteri {
         this.dtarih = dtarih;
     }
 
-    public String getTel() {
+    public Long getTel() {
         return tel;
     }
 
-    public void setTel(String tel) {
+    public void setTel(Long tel) {
         this.tel = tel;
+    }
+
+    public Musteri() {
     }
 }

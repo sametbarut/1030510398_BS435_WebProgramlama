@@ -8,9 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class InsertTest {
 
@@ -49,13 +50,11 @@ public class InsertTest {
 
 
     @Test
-    public void insertMusteriUrun() {
+    public void testEmptyUrun() {
 
-        MusteriUrun musteriurun = new MusteriUrun();
-        musteriurun.setNo(1L);
-
-        boolean persisted = persistInATransaction(musteriurun);
-        assertTrue(persisted);
+        Urun x =new Urun();
+        Musteri y0 = new Musteri();
+        Musteri y1 = new Musteri();
     }
 
     @Test
@@ -69,13 +68,16 @@ public class InsertTest {
     }
 
     @Test
-    public void insertUrun() {
+    public void testMessageFail() {
+        Urun user = new Urun();
+
 
         Urun urun = new Urun();
-        urun.setFiyat(String.valueOf(3L));
+        urun.setFiyat(Long.valueOf(3L));
 
         boolean persisted = persistInATransaction(urun);
         assertTrue(persisted);
     }
-
 }
+
+
