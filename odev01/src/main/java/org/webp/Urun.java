@@ -8,10 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> main
 import java.util.List;
 
 
@@ -20,26 +17,7 @@ import java.util.List;
 public class Urun {
 
     @Id
-<<<<<<< HEAD
     private Long Uno;
-=======
-    @NotNull
-    @NotBlank
-    @Range(min = 1, max = 150)
-    private Long Uno;
-
-    @Length(min=2, max = 128)
-    @NotNull
-    private String uadi;
-    @Range(min = 0, max = 150)
-    @NotBlank
-    @NotNull
-    private String fiyat;
-
-    @Range(min = 1, max = 150)
-    @NotBlank
-    private String miktar;
->>>>>>> main
 
     @Length(min=2, max = 128)
     @NotNull
