@@ -33,6 +33,20 @@ public class Musteri {
     @Range(min = 0, max = 150)
     private Long tel;
 
+    private int sayici;
+
+    public int getSayici() {
+        return sayici;
+    }
+
+    public Musteri(int sayici) {
+        this.sayici = sayici;
+    }
+
+    public void setSayici(int sayici) {
+        this.sayici = sayici;
+    }
+
     public Long getMno() {
         return mno;
     }
